@@ -1,0 +1,5 @@
+package com.criteriaJpa.config;
+
+public class AppConfig {
+
+}

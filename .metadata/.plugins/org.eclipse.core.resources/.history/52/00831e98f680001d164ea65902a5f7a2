@@ -1,0 +1,38 @@
+package com.criteriaJpa.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.criteriaJpa.entities.Department1;
+import com.criteriaJpa.entities.Employee1;
+
+@Repository
+public interface EmployeeRepo extends JpaRepository<Employee1, Integer> {
+	
+	List<Employee1> findByname(String name);
+	
+	List<Employee1> findByageGreaterThanEqual(int age);
+	  List<Employee1> findByOrderByNameDesc();
+	  
+	  List<Employee1> findByOrderByIdAsc();
+	  List<Employee1> findByAgeBetween(int a, int b);
+	  
+	  @Query(value = "SELECT * FROM Employee_table", 
+			  nativeQuery = true)
+	  List<Employee1> findAllNative();
+	  
+	  @Query(value = "SELECT * FROM Employee_table where id = ", 
+			  nativeQuery = true)
+	  Employee1 getByIdNative(int id);
+	  
+	  @Query(value = "select e from Employee1 e where e.id =:id")
+		public  Employee1 findByIdJpql(@Param("id") int id);
+	  
+	  
+	  
+
+}

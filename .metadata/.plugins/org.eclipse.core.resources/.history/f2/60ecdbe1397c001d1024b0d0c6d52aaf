@@ -1,0 +1,58 @@
+package com.criteriaJpa.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.criteriaJpa.entities.Department;
+import com.criteriaJpa.entities.Employee;
+import com.criteriaJpa.repository.EmployeeRepo;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+	
+	@Autowired
+	EmployeeRepo employeeRepo;
+
+	@Override
+	public List<Employee> get() {
+		// TODO Auto-generated method stub
+		return employeeRepo.findAll() ;
+	}
+
+	@Override
+	public Department getById(int id) {
+		// TODO Auto-generated method stub
+		return employeeRepo.findById(id).get();
+	}
+
+//	@Override
+//	public void save(Employee employee) {
+//		// TODO Auto-generated method stub
+//		employeeRepo.save(employee);
+//		
+//	}
+
+	@Override
+	public void deleteById(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Employee update(Employee employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(Department dept) {
+		// TODO Auto-generated method stub
+		
+		employeeRepo.save(dept);
+		
+		
+	}
+
+}

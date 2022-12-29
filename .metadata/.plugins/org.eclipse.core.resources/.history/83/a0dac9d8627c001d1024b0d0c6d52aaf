@@ -1,0 +1,77 @@
+package com.criteriaJpa.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.criteriaJpa.entities.Department1;
+import com.criteriaJpa.entities.Employee1;
+import com.criteriaJpa.repository.EmployeeRepo;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+	
+	@Autowired
+	EmployeeRepo employeeRepo;
+
+	@Override
+	public List<Employee1> getAll() {
+		// TODO Auto-generated method stub
+		return employeeRepo.findAll() ;
+	}
+
+	@Override
+	public Employee1 getById(int id) {
+		// TODO Auto-generated method stub
+		return employeeRepo.findById(id).get();
+	}
+
+
+
+	@Override
+	public void deleteById(int id) {
+		// TODO Auto-generated method stub
+		employeeRepo.deleteById(id);
+		
+	}
+
+	@Override
+	public Employee1 update(Employee1 employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(Employee1 employee) {
+		// TODO Auto-generated method stub
+		
+		employeeRepo.save(employee);
+		
+		
+	}
+
+	@Override
+	public List<Employee1> getByName(String name) {
+		// TODO Auto-generated method stub
+		
+		return employeeRepo.findByname(name);
+	}
+
+	@Override
+	public List<Employee1> getByAgeGtE(int age) {
+		// TODO Auto-generated method stub
+		
+		return employeeRepo.findByageGreaterThanEqual(age);
+	}
+
+	@Override
+	public List<Employee1> getAllOrderby() {
+		// TODO Auto-generated method stub
+		
+		return employeeRepo.findByOrderByNameDesc();
+	}
+
+	
+
+}

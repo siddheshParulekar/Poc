@@ -1,0 +1,39 @@
+package com.criteriaJpa.config;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+	
+	 @Bean
+	    public DataSource getDataSource() {
+	        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+	        dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
+	        dataSourceBuilder.url("jdbc:mysql://localhost:3306/poc2");
+	        dataSourceBuilder.username("root");
+	        dataSourceBuilder.password("root");
+	        return dataSourceBuilder.build();
+	    }
+	 
+	 //reference
+//	 <Resource name="jdbc/DataSourceName" auth="Container" type="javax.sql.DataSource"
+//             maxActive="-1" maxIdle="-1" maxWait="-1"
+//             username="user" password="password"
+//             driverClassName="com.mysql.jdbc.Driver"
+//               url="jdbc:mysql://IP_DB:7011/Schema_name"/>
+	 
+	 public void printDBCPConnectionDetails()
+	    {
+	        BasicDataSource basicDataSource = (BasicDataSource) getDataSource();
+	        System.out.println("Instace of DBCP basic data source: " + basicDataSource);
+	        System.out.println("Driver class name: " + basicDataSource.getDriverClassName());
+	        System.out.println("Max idle connection: " + basicDataSource.getMaxIdle());
+	        System.out.println("Total connection: " + basicDataSource.getMaxTotal());
+	    }
+
+}

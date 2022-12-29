@@ -1,0 +1,5 @@
+package com.criteriaJpa.entities;
+
+public class Employee {
+
+}

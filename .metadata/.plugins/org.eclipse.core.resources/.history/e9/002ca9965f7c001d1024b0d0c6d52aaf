@@ -1,0 +1,19 @@
+package com.criteriaJpa.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.criteriaJpa.entities.Department1;
+import com.criteriaJpa.entities.Employee1;
+
+@Repository
+public interface EmployeeRepo extends JpaRepository<Employee1, Integer> {
+	
+	List<Employee1> findByname(String name);
+	
+	List<Employee1> findByageGreaterThanEqual(int age);
+	  List<Employee1> findByOrderBynameDesc();
+
+}

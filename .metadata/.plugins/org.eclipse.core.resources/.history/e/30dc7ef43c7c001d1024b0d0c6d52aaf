@@ -1,0 +1,37 @@
+package com.criteriaJpa.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.criteriaJpa.entities.Department;
+import com.criteriaJpa.service.EmployeeService;
+
+@RestController
+@RequestMapping("/Criteria")
+public class EmployeeController {
+	@Autowired
+	EmployeeService employeeService;
+
+	@RequestMapping("/addDepartment")
+	public void addDepartment(@RequestBody Department department) {
+
+		employeeService.save(department);
+
+	}
+	
+	
+	@GetMapping("/getAll")
+	public List<Department> getAllDepartment(){
+		return employeeService.get();
+		
+	}
+	
+	
+	
+
+}

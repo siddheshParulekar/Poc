@@ -1,0 +1,49 @@
+package com.criteriaJpa.config;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.zaxxer.hikari.HikariDataSource;
+
+@Configuration
+public class AppConfig {
+	
+	 @Bean
+	    public DataSource getDataSource() {
+	        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+	        dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
+	        dataSourceBuilder.url("jdbc:mysql://localhost:3306/poc2");
+	        dataSourceBuilder.username("root");
+	        dataSourceBuilder.password("root");
+	       
+	        return dataSourceBuilder.build();
+	    }
+	 
+	 //reference
+//	 <Resource name="jdbc/DataSourceName" auth="Container" type="javax.sql.DataSource"
+//             maxActive="-1" maxIdle="-1" maxWait="-1"
+//             username="user" password="password"
+//             driverClassName="com.mysql.jdbc.Driver"
+//               url="jdbc:mysql://IP_DB:7011/Schema_name"/>
+	 @Bean
+	 public void printHikariConnectionDetails()
+	    {
+	        HikariDataSource ds = (HikariDataSource)getDataSource();
+	        System.out.println("Instace of DBCP basic data source: " + ds);
+	        System.out.println("Driver class name: " + ds.getDriverClassName());
+	        System.out.println("Connection Pool size : " + ds.getMaximumPoolSize());
+	        //System.out.println("after setting : " + ds.setMaximumPoolSize(5));
+	        ds.setMaximumPoolSize(5);
+	        ds.setConnectionTimeout(10000);
+	        ds.setMinimumIdle(2);
+	       
+	        System.out.println(" After setting Connection Pool size : " + ds.getMaximumPoolSize());
+	        System.out.println("Url: " + ds.getJdbcUrl());
+
+	    }
+
+}

@@ -1,0 +1,5 @@
+package com.criteriaJpa.service;
+
+public class EmployeeService {
+
+}

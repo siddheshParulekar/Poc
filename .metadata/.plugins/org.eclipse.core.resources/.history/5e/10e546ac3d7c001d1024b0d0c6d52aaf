@@ -1,0 +1,29 @@
+package com.poc.service;
+
+import com.poc.entity.Department1;
+import com.poc.entity.Employee1;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+public interface EmployeeService {
+
+    List<Employee1> get();
+
+    Employee1 get (int id);
+
+    void save(Employee1 employee);
+
+    void delete(int id);
+    
+    Employee1 update (Employee1 employee);
+    void save(Department1 dept);
+    public Object criteriaByName();
+
+    public Object criteria(int id);
+
+    public Object criteriaEquals(int id);
+    Object criteriaProjection();
+	//List<Employee> getPagi();
+
+}

@@ -1,0 +1,22 @@
+package com.criteriaJpa.service;
+
+import java.util.List;
+
+import com.criteriaJpa.entities.Department;
+import com.criteriaJpa.entities.Employee;
+
+
+
+public interface EmployeeService {
+	 List<Department> get();
+
+	    Department getById(int id);
+
+//	    void save(Employee employee);
+
+	    void deleteById(int id);
+	    
+	    Employee update (Employee employee);
+	    void save(Department dept);
+
+}

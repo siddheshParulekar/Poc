@@ -1,0 +1,5 @@
+package com.criteriaJpa.repository;
+
+public interface EmployeeRepo {
+
+}
